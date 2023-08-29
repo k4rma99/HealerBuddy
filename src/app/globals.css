@@ -2,26 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+:root {
+    /* Main brand colors */
+    --primary-color: #D2FFAA;
+    --secondary-color: #638942;
+    --bg-contrast: #032;
+    --white: #F5FFEB;
+    --interact-object-color: #D17A22;
+
+    /* static asset */
+    /* --hero-right-svg: url("../../assets/hero-right-image.svg");
+    --login-image-svg: url("../../assets/login-page-image.svg");
+    --logo-svg: url("../../assets/logo.svg");
+    --polygon-1: url("../../assets/polygon-1.svg") */
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  background: #F5FFEB;
+}
+
+:root {
+  /* --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255; */
+}
+
+body {
+  /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
 }
+
+
+/* @media (prefers-color-scheme: light) {
+  :root {
+   --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0; 
+  }
+} */
