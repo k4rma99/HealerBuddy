@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 import './login.css'
-import { getCsrfToken, signIn } from "next-auth/react";
-import { GetServerSidePropsContext } from "next";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
@@ -85,11 +84,4 @@ export default function Login() {
             </section>
         </>
     )
-}
-
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const csrfToken = await getCsrfToken(context)
-    return {
-        props: { csrfToken },
-    }
 }
