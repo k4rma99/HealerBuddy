@@ -18,8 +18,8 @@ export default function HeaderLink({href, linkName ,...rest}: Props) {
         <Link
             aria-current={isActive}
             className={clsx(
-                'inline-block py-3 px-2 transition-colors',
-                isActive ? 'text-white' : 'text-gray-400 hover:text-gray-200'
+                'inline-block py-3 px-7 transition-colors',
+                isActive ? ' text-green-500' : 'text-black hover:text-gray-400'
               )}
             href={href}
             {...rest}

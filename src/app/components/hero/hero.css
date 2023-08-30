@@ -1,0 +1,27 @@
+@import "../../globals.css";
+
+
+
+
+@media screen and (max-width:800px) {
+
+    header{
+        padding: 0;
+    }
+
+    .left-flex{
+        padding-top: 50px;
+    }
+
+    .right-flex{
+        display: none      
+    }
+}
+
+.start-button{
+    background-color: var(--interact-object-color)
+}
+
+.start-button:hover{
+    background-color: #b8630d;
+}

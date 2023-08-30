@@ -11,10 +11,9 @@
     --interact-object-color: #D17A22;
 
     /* static asset */
-    /* --hero-right-svg: url("../../assets/hero-right-image.svg");
-    --login-image-svg: url("../../assets/login-page-image.svg");
-    --logo-svg: url("../../assets/logo.svg");
-    --polygon-1: url("../../assets/polygon-1.svg") */
+    --hero-right-svg: url("../assets/hero-right-image.svg");
+    --login-image-svg: url("../assets/login-page-image.svg");
+    --logo-isolated: url("../assets/logo-isolated.png")
 }
 
 body {

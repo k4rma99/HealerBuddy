@@ -1,0 +1,9 @@
+@import "../../../globals.css";
+
+#dashboard-sidenav{
+    background-color: var(--white);
+}
+
+.profile-image{
+    left: 15%;
+}
