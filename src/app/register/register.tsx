@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 import './register.css'
+import { redirect } from 'next/dist/server/api-utils';
+import { useRouter } from 'next/navigation';
 // import { getServerSession } from 'next-auth';
 // import {authOptions} from '@/app/api/auth/[...nextauth]/route'
 // import { redirect } from 'next/navigation'
@@ -13,6 +15,7 @@ export default function RegisterForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState<string | null>('');
+    const { push } = useRouter();
 
     // const session = await getServerSession(authOptions);
 
@@ -55,14 +58,17 @@ export default function RegisterForm() {
                     name, email, password
                 })
             })
-
+            
             if (res.ok) {
                 const form = e.target;
+                push('/register/fill-details');
                 form.reset()
             }
+
         } catch (error) {
             console.log("Error")
         }
+
     }
 
     return (

@@ -1,5 +1,5 @@
 import Image from "next/image"
-import profileImg from "@/assets/logo-isolated.png"
+import profileImg from "@/assets/images/logo-isolated.png"
 
 import "./sidenav.css";
 import { SidenavLink } from "./sidenavItem";
