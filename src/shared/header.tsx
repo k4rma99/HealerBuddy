@@ -19,6 +19,10 @@ export default function Header() {
                     <Link href={"/for-buddies"}>
                         <button className="inline-flex items-center rounded text-base mt-4 md:mt-0 mr-5">For Buddies</button>
                     </Link>
+
+                    <Link href={"/login"}>
+                        <button className="inline-flex items-center rounded text-base mt-4 md:mt-0 mr-5">Login</button>
+                    </Link>
                 </div>
 
             </div>
