@@ -1,6 +1,6 @@
 import Image from "next/image"
-import img from "@/assets/logo-text-v24.png"
-import profileImg from "@/assets/logo-isolated.png"
+import img from "@/assets/images/logo-text-v24.png"
+import profileImg from "@/assets/images/logo-isolated.png"
 
 export default function Header({ params: { } }) {
 

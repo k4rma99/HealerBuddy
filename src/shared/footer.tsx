@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import HeaderLink from './headerLink';
 import Link from 'next/link';
 import Image from 'next/image';
-import img from "@/assets/logo-text-v24.png"
+import img from "@/assets/images/logo-text-v24.png"
 
 // Confirm on google fonts
 
