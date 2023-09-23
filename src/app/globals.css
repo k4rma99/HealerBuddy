@@ -23,6 +23,7 @@
     /* static asset */
     --hero-right-svg: url("../assets/images/hero-right-image.svg");
     --login-image-svg: url("../assets/images/login-page-image.svg");
-    --logo-isolated: url("../assets/images/logo-isolated.png")
+    --logo-isolated: url("../assets/images/logo-isolated.png");
+    --hero-image: url("../assets/images/hero-image.jpg")
 
 }

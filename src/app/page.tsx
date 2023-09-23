@@ -1,7 +1,7 @@
 import Header from '@/shared/header'
 import Hero from './components/hero/hero'
 import Footer from '@/shared/footer'
-import { Count } from './components/count/count'
+import { Content } from './components/count/content'
 import { Process } from './components/process/process'
 import { Team } from './components/team/team'
 import { Testimonials } from './components/testimonials/testimonials'
@@ -13,7 +13,7 @@ export default function Home() {
     <main>
       <Header />
       <Hero />
-      <Count />
+      <Content />
       <ChooseUs />
       <Services />
       <Process />

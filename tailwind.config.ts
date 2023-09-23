@@ -9,6 +9,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors:{
+        'fi-white': '#F5FFEB',
+        'fi-primary': '#D2FFAA',
+        'fi-secondary': '#638942',
+        'fi-button': '#D17A22'
+      },
       screens: {
         'sm': '640px',
         // => @media (min-width: 640px) { ... }

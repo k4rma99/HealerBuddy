@@ -1,25 +1,105 @@
 @import "../../globals.css";
 
-@media screen and (max-width:800px) {
-
-    header{
-        padding: 0;
-        font-family: 'ProductSans', sans-serif;
-    }
-
-    .left-flex{
-        padding-top: 50px;
-    }
-
-    .right-flex{
-        display: none      
-    }
+.start-button {
+  background-color: var(--interact-object-color);
 }
 
-.start-button{
-    background-color: var(--interact-object-color)
+.start-button:hover {
+  background-color: #b8630d;
 }
 
-.start-button:hover{
-    background-color: #b8630d;
+.text-content{
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateX(0) translateY(35%);
+}
+
+@keyframes move_wave {
+  0% {
+    transform: translateX(0) translateZ(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-25%) translateZ(0) scaleY(0.55);
+  }
+  100% {
+    transform: translateX(-50%) translateZ(0) scaleY(1);
+  }
+}
+.waveWrapper {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+}
+.waveWrapperInner {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  height: 95%;
+  background-image: linear-gradient(to top, #F5FFEB 20%, #D2FFAA 80%);
+  /* background-image: var(--hero-image); */
+}
+.bgTop {
+  z-index: 2;
+  opacity: 0.5;
+}
+.bgMiddle {
+  z-index: 1;
+  opacity: 0.75;
+}
+.bgBottom {
+  z-index: 0;
+}
+.wave {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat no-repeat;
+  background-position: 0 bottom;
+  transform-origin: center bottom;
+}
+.waveTop {
+  background-size: 50% 100px;
+  background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png');
+}
+.waveAnimation .waveTop {
+  animation: move-wave 3s;
+  -webkit-animation: move-wave 3s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+}
+.waveMiddle {
+  background-size: 50% 120px;
+  background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png');
+}
+.waveAnimation .waveMiddle {
+  animation: move_wave 10s linear infinite;
+}
+.waveBottom {
+  background-size: 50% 100px;
+  background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png');
+}
+.waveAnimation .waveBottom {
+  animation: move_wave 15s linear infinite;
+}
+
+@media screen and (max-width: 800px) {
+  header {
+    padding: 0;
+    font-family: "ProductSans", sans-serif;
+  }
+
+  .left-flex {
+    padding-top: 50px;
+  }
+
+  .right-flex {
+    display: none;
+  }
 }

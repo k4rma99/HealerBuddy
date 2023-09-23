@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Header() {
     return (
-        <header className="text-gray-600 body-font pr-20 pl-20">
+        <header className="text-gray-600 bg-fi-primary body-font pr-20 pl-20">
             <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">
                 <Link href="/" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
                     <Image
@@ -24,7 +24,6 @@ export default function Header() {
                         <button className="inline-flex items-center rounded text-base mt-4 md:mt-0 mr-5">Login</button>
                     </Link>
                 </div>
-
             </div>
         </header>
     )
