@@ -23,6 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <script src="//embed.typeform.com/next/embed.js"></script>
       <Head>
         <link rel="shortcut icon" href="./favicon.ico" />
       </Head>

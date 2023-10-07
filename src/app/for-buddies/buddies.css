@@ -16,10 +16,9 @@
 .priceSwitcher {
   background-color: var(--secondary-color);
   color: var(--bg-contrast);
-
-  &::after {
-    transition: all 5s linear;
-  }
+}
+.priceSwitcher::after {
+  transition: all 5s linear;
 }
 
 .plan-details {

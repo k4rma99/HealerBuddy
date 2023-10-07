@@ -6,6 +6,9 @@ import Link from "next/link";
 import './login.css'
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+
+import logo from "@/assets/images/logo-text-v24.png"
 
 export default function Login() {
 
@@ -44,8 +47,10 @@ export default function Login() {
                 <div className="login-grid m-auto bg-slate-50 rounded-2xl w-3/5 h-3/4 inline-grid lg:grid-cols-2">
                     <div className="left-flex pt-10 2xl:pt-50 rounded-l-2xl relative order-2 justify-evenly bg-gray-100">
                         <div className="text-left w-3/4 xl:pt-20 2xl:pt-20 3xl:pt-40 flex top-1/2 m-0 items-center">
-                            <div className="flex w-full pl-10"><div className="logo-image w-10 h-10 bg-contain"></div><div className="pl-2 pt-1 self-center">HealerBuddy</div></div></div>
+                            <div className="flex w-full relative left-1/3"><Image src={logo} width={300} alt="logo" /></div>
+                        </div>
                         <div className="line mt-5 mb-5"></div>
+
 
                         <form onSubmit={handleSubmit} className="login-section pl-10">
 
@@ -55,7 +60,7 @@ export default function Login() {
                                 )
                             }
 
-                            <div className="text"><strong>Login to your account</strong></div>
+                            <div className="text text-black"><strong>Login to your account</strong></div>
                             <div className="flex flex-col">
 
                                 <div className="pt-3">
@@ -77,7 +82,7 @@ export default function Login() {
                     <div className="right-flex order-1 flex flex-col-reverse items-center">
                         <div className="login-image"></div>
                         <div className="text-content text-white m-auto absolute w-1/2 pb-10">
-                            Welcome back buddy!! Let us make some people feel better.
+                            Hey you!! Welcome back to your journey.
                         </div>
                     </div>
                 </div>

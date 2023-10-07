@@ -1,4 +1,4 @@
-@import "../globals.css";
+@import "../../globals.css";
 
 .login-page {
   background: var(--hero-right-svg);
@@ -31,10 +31,9 @@
 }
 
 .logo-image {
-  background-image: var(--logo-txt-side);
+  background-image: var(--logo-isolated);
   background-repeat: no-repeat;
   background-position: center;
-  height: 3rem;
 }
 
 .line {
@@ -43,7 +42,7 @@
   bottom: 0;
   left: 25%;
   right: 0;
-  width: 53%;
+  width: 50%;
   height: 0.0625rem;
   background: rgba(0, 0, 0, 0.18);
 }

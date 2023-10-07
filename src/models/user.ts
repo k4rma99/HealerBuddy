@@ -14,6 +14,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    isProvider: {
+      type: Boolean,
+      required: true,
+    },
   },
   { timestamps: true }
 );
