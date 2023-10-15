@@ -1,5 +1,5 @@
-@import "../globals.css";
-
-.card{
-    color: black;
+.slits{
+    display: grid;
+    grid-column: 3;
+    grid-template-columns: 50px auto 50px;
 }

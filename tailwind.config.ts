@@ -13,7 +13,13 @@ const config: Config = {
         'fi-white': '#F5FFEB',
         'fi-primary': '#D2FFAA',
         'fi-secondary': '#638942',
-        'fi-button': '#D17A22'
+        'fi-button': '#D17A22',
+        'fi-darker': "#032",
+        'fi-midnight': "#023C40",
+        'fi-rose': "#C3979F",
+        'fi-van': "#473335",
+        'fi-zomp': "#439A86",
+        'fi-indred': "#E65F5C"
       },
       screens: {
         'sm': '640px',

@@ -23,9 +23,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <script src="//embed.typeform.com/next/embed.js"></script>
       <Head>
+        <script src="//embed.typeform.com/next/embed.js"></script>
+        <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
         <link rel="shortcut icon" href="./favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
+        />
       </Head>
       <body className={inter.className}>
         <AuthProvider>{children}</AuthProvider>
