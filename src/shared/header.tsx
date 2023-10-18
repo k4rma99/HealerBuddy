@@ -6,7 +6,7 @@ import Image from "next/image";
 import img from "@/assets/images/logo-text-v24.png"
 import Link from "next/link";
 
-export default function Header({isHidden = false, backgroundColor = "fi-primary"}){
+export default function Header({isHidden = false, backgroundColor = "transparent"}){
     return (
         <header className={`text-gray-600 bg-${backgroundColor} body-font pr-20 pl-20`}>
             <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center justify-between">

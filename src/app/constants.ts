@@ -3,6 +3,17 @@ import { StaticImageData } from "next/image";
 
 import headerGear from "@/assets/icons/head-gear.svg";
 
+import hero1 from "@/assets/images/front-page-1.jpg";
+import hero2 from "@/assets/images/front-page-2.jpg";
+import hero4 from "@/assets/images/front-page-4.jpg";
+import hero5 from "@/assets/images/front-page-5.jpg";
+import hero6 from "@/assets/images/front-page-6.jpg";
+import hero7 from "@/assets/images/front-page-7.jpg";
+import hero8 from "@/assets/images/front-page-8.jpg";
+import hero9 from "@/assets/images/front-page-9.jpg";
+import hero10 from "@/assets/images/front-page-10.jpg";
+import hero11 from "@/assets/images/front-page-11.jpg";
+
 export const cities = [
   "Toronto",
   "Montreal",
@@ -228,4 +239,18 @@ export const FilterCategory: {
     filterValue: "",
     data: Object.values(TargetAgeGroups),
   },
+};
+
+export const HeroImages: { [id: number]: StaticImageData} = {
+  1: hero1,
+  2: hero2,
+  3: hero2,
+  4: hero4,
+  5: hero5,
+  6: hero6,
+  7: hero7,
+  8: hero8,
+  9: hero9,
+  10: hero10,
+  11: hero11
 };

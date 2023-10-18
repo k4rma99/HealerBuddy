@@ -11,7 +11,6 @@ import Services from './components/services-given/services'
 export default function Home() {
   return (
     <main>
-      <Header />
       <Hero />
       <Content />
       <ChooseUs />
