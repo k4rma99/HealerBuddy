@@ -28,6 +28,10 @@ export default function RootLayout({
         <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
         <link rel="shortcut icon" href="./favicon.ico" />
         <link
+          href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,600&display=swap"
+          rel="stylesheet"
+        />
+        <link
           rel="stylesheet"
           href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
         />

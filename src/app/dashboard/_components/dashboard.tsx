@@ -6,6 +6,7 @@ import profilePic from "@/assets/images/profile-image-stock.jpg"
 import notes from "@/assets/icons/notes.svg"
 import Script from "next/script";
 import { InlineWidget } from "react-calendly";
+import { ProfileSide } from "./profileSide";
 
 export const DashboardData = () => {
 
@@ -49,128 +50,95 @@ export const DashboardData = () => {
         }
     ]
 
+    const stats = [
+        {
+            name: "Sessions",
+            icon:
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="mt-4 h-7 w-16"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                </svg>,
+            count: 100,
+            change: compareWithLastMonth()
+        },
+        {
+            name: "Sessions",
+            icon: "",
+            count: 100,
+            change: compareWithLastMonth()
+        },
+        {
+            name: "Sessions",
+            icon: "",
+            count: 100,
+            change: compareWithLastMonth()
+        },
+        {
+            name: "Sessions",
+            icon: "",
+            count: 100,
+            change: compareWithLastMonth()
+        }
+    ]
+
+    function compareWithLastMonth() {
+        return 1
+    }
+
     return (
-        <div className="div">
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 w-full max-w-6xl">
+        <div className="main_dashboard flex md:grid md:grid-cols-[500px_minmax(100px,_1fr)] lg:grid-cols-[700px_minmax(100px,_1fr)] xl:grid-cols-[1200px_minmax(100px,_1fr)]">
+            <div className="main_content">
+                <h1 className="text-2xl font-black text-gray-800">Good Morning!</h1>
+                <p className="mb-6 text-gray-600"></p>
 
-                {/* <!-- Tile 1 --> */}
-                <div className="flex items-center p-4 bg-fi-secondary rounded">
-                    <div className="flex flex-shrink-0 items-center justify-center bg-green-200 h-16 w-16 rounded">
-                        <svg className="w-6 h-6 fill-current text-green-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div className="flex-grow flex flex-col ml-4">
-                        <span className="text-xl font-bold text-white">$8,430</span>
-                        <div className="flex items-center justify-between">
-                            <span className="text-white">Revenue last 30 days</span>
-                            <span className="text-green-500 text-sm font-semibold ml-2">+12.6%</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* <!-- Tile 2 --> */}
-                <div className="flex items-center p-4 bg-fi-secondary rounded">
-                    <div className="flex flex-shrink-0 items-center justify-center bg-red-200 h-16 w-16 rounded">
-                        <svg className="w-6 h-6 fill-current text-red-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div className="flex-grow flex flex-col ml-4">
-                        <span className="text-xl font-bold text-white">211</span>
-                        <div className="flex items-center justify-between">
-                            <span className="text-white">Clients last 30 days</span>
-                            <span className="text-red-500 text-sm font-semibold ml-2">-8.1%</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* <!-- Tile 3 --> */}
-                <div className="flex items-center p-4 bg-fi-secondary rounded">
-                    <div className="flex flex-shrink-0 items-center justify-center bg-green-200 h-16 w-16 rounded">
-                        <svg className="w-6 h-6 fill-current text-green-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div className="flex-grow flex flex-col ml-4">
-                        <span className="text-xl font-bold text-white">140</span>
-                        <div className="flex items-center justify-between">
-                            <span className="text-white">Meetings last 30 days</span>
-                            <span className="text-green-500 text-sm font-semibold ml-2">+28.4%</span>
-                        </div>
-                    </div>
+                {/* Stats */}
+                <div className="flex flex-wrap w-full md:grid md:grid-cols-4 md:justify-between py-10">
+                    {
+                        stats.map((s) => {
+                            return (
+                                <div className="flex w-72">
+                                    <div className="flex w-full max-w-full flex-col break-words rounded-lg border border-gray-100 bg-white text-gray-600 shadow-lg">
+                                        <div className="p-3">
+                                            <div className="absolute -mt-10 h-16 w-16 rounded-xl bg-gradient-to-tr from-emerald-700 to-emerald-500 text-center text-white shadow-lg">
+                                                {s.icon}
+                                            </div>
+                                            <div className="pt-1 text-right">
+                                                <p className="text-sm font-light capitalize">{s.name}</p>
+                                                <h4 className="text-2xl font-semibold tracking-tighter xl:text-2xl">
+                                                    {s.count}
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <hr className="opacity-50" />
+                                        <div className="p-4">
+                                            <p className="font-light">
+                                                <span className="text-sm font-bold text-red-600">{s.change}</span>vs last
+                                                month
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
 
             </div>
 
-
-            <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-3 w-full">
-
-                {/* PatientsLists */}
-                <div className="overflow-x-auto pt-10">
-                    <table className="table bg-fi-primary text-black">
-                        {/* head */}
-                        <thead className="bg-fi-secondary text-white">
-                            <tr>
-                                <th>
-                                    <label>
-                                        <input type="checkbox" className="checkbox" />
-                                    </label>
-                                </th>
-                                <th></th>
-                                <th>Name</th>
-                                <th>ID</th>
-                                <th>Next Session</th>
-                                <th>Sessions</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            {
-                                patientData.map(data => {
-                                    return (
-                                        <tr>
-                                            <th>
-                                                <label>
-                                                    <input type="checkbox" className="checkbox bg-fi-secondary checked:bg-fi-white" />
-                                                </label>
-                                            </th>
-                                            <td>
-                                                <div className="flex items-center space-x-3">
-                                                    <div className="avatar">
-                                                        <div className="mask mask-squircle h-12">
-                                                            <Image
-                                                                src={data.profilePic}
-                                                                alt=""
-                                                                width={10}
-                                                                height={10}
-                                                                className=""
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div className="font-bold">{data.name}</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>{data.id}</td>
-                                            <td>{data.nextMeeting}</td>
-                                            <td>{data.sessionCount}</td>
-                                            <th>
-                                                <button className="btn btn-ghost btn-xs"><Image src={notes} alt="" width={30} height={30} /></button>
-                                            </th>
-                                        </tr>
-                                    )
-                                })
-                            }
-                        </tbody>
-                    </table>
-                </div>
-
-
-                {/* Schedule */}
-                <InlineWidget url="https://calendly.com/vkn-vinay0?hide_landing_page_details=true&hide_gdpr_banner=true" />
+            <div className="m-10 mt-0 max-w-sm profile justify-self-end">
+                <ProfileSide />
             </div>
+
         </div>
     )
 }

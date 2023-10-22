@@ -14,85 +14,7 @@ import hero9 from "@/assets/images/front-page-9.jpg";
 import hero10 from "@/assets/images/front-page-10.jpg";
 import hero11 from "@/assets/images/front-page-11.jpg";
 
-export const cities = [
-  "Toronto",
-  "Montreal",
-  "Vancouver",
-  "Calgary",
-  "Edmonton",
-  "Ottawa",
-  "Winnipeg",
-  "Quebec City",
-  "Hamilton",
-  "London",
-  "Halifax",
-  "Victoria",
-  "Regina",
-  "Saskatoon",
-  "St. John's",
-  "Charlottetown",
-  "Yellowknife",
-  "Whitehorse",
-  "Iqaluit",
-];
-
-export const targetGroups = [
-  "Young children (0-4)",
-  "Children (5-12) ",
-  "Teen (13-17) ",
-  "Young adults (18-24) ",
-  "Adults (25-64) ",
-  "Seniors (65+) ",
-];
-
-export const genderGroups = [
-  "Male",
-  "Female",
-  "Cisgender",
-  "Transgender",
-  "Non-Binary",
-  "Genderqueer",
-  "Genderfluid",
-  "Agender",
-  "Bigender",
-];
-
-export const langs = [
-  "English",
-  "French",
-  "Spanish",
-  "Arabic",
-  "Chinese (Mandarin)",
-  "Punjabi",
-  "Tagalog",
-  "Italian",
-  "German",
-  "Portuguese",
-  "Urdu",
-  "Tamil",
-];
-
-export const splts = [
-  "Depression",
-  "Anxiety",
-  "Bipolar Disorder",
-  "Schizophrenia",
-  "Post-Traumatic Stress Disorder (PTSD)",
-  "Obsessive-Compulsive Disorder (OCD)",
-  "Eating Disorders",
-  "Borderline Personality Disorder",
-  "Attention-Deficit/Hyperactivity Disorder (ADHD)",
-  "Autism Spectrum Disorder",
-  "Substance Use Disorders",
-  "Self-Harm",
-  "Suicidal Thoughts",
-  "Dissociative Disorders",
-  "Personality Disorders",
-  "Panic Disorder",
-  "Generalized Anxiety Disorder",
-  "Social Anxiety Disorder",
-  "Specific Phobias",
-];
+import dashboardIcon from "@/assets/icons/dashboard.svg"
 
 export const sltData: {
   [id: string]: { name: string; icon: string | StaticImageData };
@@ -254,3 +176,11 @@ export const HeroImages: { [id: number]: StaticImageData} = {
   10: hero10,
   11: hero11
 };
+
+export const menuItems: any = [
+  {
+      name: "Dashboard",
+      icon: dashboardIcon,
+      containerClass: "dashboard"
+  }
+]
