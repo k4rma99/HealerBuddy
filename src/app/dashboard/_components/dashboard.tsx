@@ -96,7 +96,7 @@ export const DashboardData = () => {
     }
 
     return (
-        <div className="main_dashboard flex md:grid md:grid-cols-[500px_minmax(100px,_1fr)] lg:grid-cols-[700px_minmax(100px,_1fr)] xl:grid-cols-[1200px_minmax(100px,_1fr)]">
+        <div className="main_dashboard flex md:grid md:grid-cols-[500px_minmax(100px,_1fr)] lg:grid-cols-[700px_minmax(100px,_1fr)] ">
             <div className="main_content">
                 <h1 className="text-2xl font-black text-gray-800">Good Morning!</h1>
                 <p className="mb-6 text-gray-600"></p>
