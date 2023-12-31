@@ -1,0 +1,25 @@
+.text-label{
+    font-size: large;
+    margin-top: 20px;
+}
+
+.text-input{
+    margin: 10px 0 10px 0;
+    font-size: large;
+    border: none;
+    padding: 1px;
+}
+
+.text-input:focus{
+    border: none;
+    text-decoration: none;
+}
+
+.text-input::placeholder{
+    padding-left: 10px;
+}
+
+.error{
+    color: red;
+    transition: all 2s linear;
+}

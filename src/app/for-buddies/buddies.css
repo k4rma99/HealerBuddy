@@ -1,0 +1,28 @@
+@import "../globals.css";
+
+.jumbotron {
+  background-color: var(--bg-contrast);
+  background-image: url("../../assets/images/for-buddies-bg.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.icon {
+  align-self: center;
+  padding-bottom: 15px;
+}
+
+.priceSwitcher {
+  background-color: var(--secondary-color);
+  color: var(--bg-contrast);
+}
+.priceSwitcher::after {
+  transition: all 5s linear;
+}
+.price {
+  position: relative;
+  top: 3rem;
+  margin-right: -30px;
+  font-size: xx-large;
+}

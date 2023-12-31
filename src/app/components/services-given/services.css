@@ -1,0 +1,54 @@
+/* styles/MultiItemCarousel.module.css */
+.carouselContainer {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carouselItem {
+  flex: 0 0 100%;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+}
+
+.carouselItem img {
+  max-width: 100%;
+  max-height: 200px;
+  margin-bottom: 10px;
+}
+
+.carouselItem h3 {
+  margin: 0;
+}
+
+.carouselItem.active {
+  opacity: 1;
+}
+
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prevButton {
+  left: 0;
+}
+
+.nextButton {
+  right: 0;
+}
