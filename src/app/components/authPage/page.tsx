@@ -5,7 +5,7 @@ import therapyImage from "@/assets/images/Psychologist-amico.png"
 
 import "./auth.css"
 
-export const AuthPage = () => {
+const AuthPage = () => {
     return (
         <div className="bg-fi-white">
             <div className="flex justify-center h-screen">
@@ -26,3 +26,5 @@ export const AuthPage = () => {
         </div>
     )
 }
+
+export default AuthPage;
