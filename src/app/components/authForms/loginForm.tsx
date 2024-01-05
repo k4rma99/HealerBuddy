@@ -1,22 +1,51 @@
-"use client"
-
-import React from 'react';
+import { useSession, signIn } from 'next-auth/react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { TextField } from '@/shared/form-elements';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { TextField } from '@/shared/form-elements';
 
-import logo from "@/assets/images/logo-text-v24.png"
+import logo from "@/assets/images/logo-text-v24.png";
 
+// Define the form validation schema
 const formValidation = Yup.object({
-  password: Yup.string()
-    .required('Required'),
-  email: Yup.string()
-    .email('Invalid email address')
-    .required('Required')
-})
+  password: Yup.string().required('Required'),
+  email: Yup.string().email('Invalid email address').required('Required')
+});
 
 export const LoginForm = () => {
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  // Submit handler for Formik
+  const handleSubmit = async (values: { email: string; password: string }, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
+    try {
+
+      // Sign in with NextAuth.js
+      const signInData = await signIn('credentials', {
+        redirect: false,
+        email: values.email,
+        password: values.password
+      });
+
+      // console.log(signInData)
+      // console.log(session?.user)
+
+      if(signInData?.error){
+        console.log(signInData?.error)
+      } else {
+        router.push(`/dashboard`)
+      }
+
+      
+    } catch (error) {
+      console.error('Sign-in error:', error);
+      // Handle error, show error message, etc.
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div className="flex items-center w-full px-6 mx-auto lg:w-1/2">
       <div className="flex-1">
@@ -24,26 +53,17 @@ export const LoginForm = () => {
           <div className="flex justify-center mx-auto">
             <Image src={logo} alt="" width={500} className="w-auto h-16" />
           </div>
-
           <p className="mt-3 text-gray-500">Sign in to access your account</p>
         </div>
 
         <div className="mt-8">
-
           <Formik
             initialValues={{
-              firstName: '',
-              lastName: '',
               email: '',
-              acceptedTerms: false,
+              password: '',
             }}
             validationSchema={formValidation}
-            onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-              }, 400);
-            }}
+            onSubmit={handleSubmit}
           >
             <Form className='relative flex flex-col w-1/2 mx-auto my-auto'>
               <TextField
@@ -67,10 +87,8 @@ export const LoginForm = () => {
               />
 
               <button className='mt-6 w-full px-4 py-2 tracking-wide text-white transition-colors duration-300 transform bg-fi-darker rounded-lg hover:bg-opacity-80 focus:outline-none focus:bg-opacity-80' type="submit">Submit</button>
-
             </Form>
           </Formik>
-
         </div>
       </div>
     </div>

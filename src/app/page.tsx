@@ -1,15 +1,16 @@
-import Footer from '@/shared/footer'
-import { AuthPage } from './components/authPage/page'
 import ChooseUs from './components/choose-us/choose'
 import { Content } from './components/count/content'
 import Hero from './components/hero/hero'
 import { Process } from './components/process/process'
 import { Services } from './components/services-given/services'
 import { Team } from './components/team/team'
-import { Dashboard } from './dashboard/page'
+import Footer from '@/shared/footer'
+
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   return (
+
     <main>
       <Hero />
       <Content />
@@ -17,8 +18,8 @@ export default function Home() {
       <Services />
       <Process />
       <Team />
-      {/* <Testimonials /> */}
       <Footer />
     </main>
+
   )
 }

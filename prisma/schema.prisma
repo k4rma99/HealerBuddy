@@ -13,12 +13,12 @@ model User {
   userId   String   @id @default(cuid())
   email    String   @unique
   password String
-  role     RoleType @default(USER)
+  role     RoleType @default(user)
   createdOn DateTime @default(now())
 }
 
 enum RoleType {
-  USER
-  DOCTOR
-  ADMIN
+  user
+  doctor
+  admin
 }

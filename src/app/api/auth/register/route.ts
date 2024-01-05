@@ -7,7 +7,7 @@ import { RoleType } from "@/lib/enums";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { email, password, roleType } = body;
+    const { email, password, role } = body;
 
     const userExists = await db.user.findUnique({
       where: { email: email },
@@ -20,21 +20,19 @@ export async function POST(req: Request) {
       );
     }
 
-    console.log(body);
-    console.log('Received roleType:', roleType);
-
     const newUser = await db.user.create({
       data: {
         email: email,
         password: await hash(password, 10),
-        role: roleType,
+        role: role ? role as RoleType : undefined,
       },
     });
 
-    console.log('Received roleType:', roleType);
+    console.log('Received roleType:', role);
 
     return NextResponse.json({ id: newUser.userId, user: newUser }, { status: 201 });
   } catch (error) {
+    console.log(error)
     return NextResponse.json(error);
   }
 }

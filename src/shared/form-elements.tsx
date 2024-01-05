@@ -5,7 +5,7 @@ import { useField } from 'formik';
 import "./form-elements.css"
 
 
-export const TextField = ({ label, ...props }) => {
+export function TextField({ label, ...props }) {
     // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
     // which we can spread on <input>. We can use field meta to show an error
     // message if the field is invalid and it has been touched (i.e. visited)
@@ -19,9 +19,9 @@ export const TextField = ({ label, ...props }) => {
             ) : null}
         </>
     );
-};
+}
 
-export const CheckboxField = ({ children, ...props }) => {
+export function CheckboxField({ children, ...props }) {
     // React treats radios and checkbox inputs differently from other input types: select and textarea.
     // Formik does this too! When you specify `type` to useField(), it will
     // return the correct bag of props for you -- a `checked` prop will be included
@@ -38,4 +38,4 @@ export const CheckboxField = ({ children, ...props }) => {
             ) : null}
         </div>
     );
-};
+}
