@@ -14,14 +14,13 @@ export default function Home() {
   return (
 
     <main>
-      {/* <Hero />
+      <Hero />
       <Content />
       <ChooseUs />
       <Services />
       <Process />
       <Team />
-      <Footer /> */}
-      <Directory />
+      <Footer />
     </main>
 
   )
