@@ -10,7 +10,7 @@ import img from "@/assets/images/logo-text-v24.png"
 const Footer = () => {
     return(
         <footer className="text-gray-600 body-font"> 
-            <div className="footer-base ">
+            <div className="footer-base pb-20">
                 <div className="">
                     <div className="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col place-content-center">
                    <Link

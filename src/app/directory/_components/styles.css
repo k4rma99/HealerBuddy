@@ -1,0 +1,20 @@
+/* .person_item{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.person_item > div:last-child{
+    grid-column: span 1.5;
+} */
+
+.slts{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+@media screen and (max-width: 600px) {
+    .person_item{
+        display: flex;
+        flex-direction: column;
+    }
+}

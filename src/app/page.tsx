@@ -8,18 +8,20 @@ import Footer from '@/shared/footer'
 
 import 'react-toastify/dist/ReactToastify.css';
 import MentalHealthForm from './register-form/page'
+import Directory from './directory/page'
 
 export default function Home() {
   return (
 
     <main>
-      <Hero />
+      {/* <Hero />
       <Content />
       <ChooseUs />
       <Services />
       <Process />
       <Team />
-      <Footer />
+      <Footer /> */}
+      <Directory />
     </main>
 
   )
