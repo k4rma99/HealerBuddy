@@ -29,7 +29,6 @@ const tableData = [
         },
         actions: [],
     },
-    // Add more objects here as needed
 ];
 
 const columnNames = [

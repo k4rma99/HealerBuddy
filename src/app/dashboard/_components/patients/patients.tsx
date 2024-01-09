@@ -29,7 +29,19 @@ const tableData = [
         },
         actions: [],
     },
-    // Add more objects here as needed
+    {
+        id: "#3066",
+        date: "Jan 6, 2022",
+        status: {
+            h2: "Requested",
+        },
+        user: {
+            avatar: profile,
+            name: "Arthur Melo",
+            email: "authurmelo@example.com",
+        },
+        actions: [],
+    },
 ];
 
 const columnNames = [

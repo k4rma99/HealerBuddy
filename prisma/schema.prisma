@@ -85,3 +85,26 @@ enum AppointmentType {
   FOLLOW_UP
   OTHER
 }
+
+model TherapistOnboarding {
+  id                                Int      @id @default(autoincrement())
+  name                              String
+  email                             String   @unique
+  phoneNumber                       String
+  country                           String
+  highestEducationLvl               String
+  currOccupation                    String
+  yearsOfExp                        Int
+  specializedTherapyTech            String[]
+  areaOfExpertise                   String[]
+  isLicensed                        Boolean
+  licenseNumber                     String?
+  isDisciplinaryAction              Boolean
+  reasonForDisciplinary             String?
+  hasProfessionalLiabilityInsurance Boolean
+  policyNumber                      String?
+  isForBackgroundCheck              Boolean
+  hasOnlineTherExp                  Boolean
+  describeExp                       String?
+  currentAOR                        String
+}
