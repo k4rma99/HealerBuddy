@@ -42,8 +42,8 @@ export function Table({ }) {
             <div className="flex flex-col">
                 <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                        <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
-                            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                        <div className="overflow-hidden border border-gray-200 md:rounded-lg">
+                            <table className="min-w-full divide-y divide-gray-200 ">
                                 <thead className="bg-gray-50">
                                     <tr>
                                         {
@@ -58,7 +58,7 @@ export function Table({ }) {
                                         }
                                     </tr>
                                 </thead>
-                                <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                                <tbody className="bg-white divide-y divide-gray-200 ">
                                     {tableData.map((row, index) => (
                                         <tr key={index}>
                                             <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
@@ -66,15 +66,15 @@ export function Table({ }) {
                                                     <span>{row.id}</span>
                                                 </div>
                                             </td>
-                                            <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                            <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
                                                 {row.date}
                                             </td>
                                             <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                                <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 dark:bg-gray-800">
+                                                <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60 ">
                                                     <h2 className="text-sm font-normal">{row.status.h2}</h2>
                                                 </div>
                                             </td>
-                                            <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                            <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
                                                 <div className="flex items-center gap-x-2">
                                                     <Image className="object-cover rounded-full"
                                                         width={50}
@@ -82,8 +82,8 @@ export function Table({ }) {
                                                         src={row.user.avatar}
                                                         alt="" />
                                                     <div className="pl-5">
-                                                        <h2 className="text-sm font-medium text-gray-800 dark:text-white">{row.user.name}</h2>
-                                                        <p className="text-xs font-normal text-gray-600 dark:text-gray-400">{row.user.email}</p>
+                                                        <h2 className="text-sm font-medium text-fi-midnight ">{row.user.name}</h2>
+                                                        <p className="text-xs font-normal text-gray-600 ">{row.user.email}</p>
                                                     </div>
                                                 </div>
                                             </td>
@@ -104,7 +104,7 @@ export function Table({ }) {
             <div className="flex items-center justify-between mt-6">
                 <a
                     href="#"
-                    className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
+                    className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 "
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -125,14 +125,14 @@ export function Table({ }) {
                 <div className="items-center hidden md:flex gap-x-3">
                     <a
                         href="#"
-                        className="px-2 py-1 text-sm text-blue-500 rounded-md dark:bg-gray-800 bg-blue-100/60"
+                        className="px-2 py-1 text-sm text-blue-500 rounded-md bg-blue-100/60"
                     >
                         1
                     </a>
                 </div>
                 <a
                     href="#"
-                    className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800"
+                    className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 "
                 >
                     <span>Next</span>
                     <svg
