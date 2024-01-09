@@ -34,8 +34,6 @@ const Dashboard = () => {
         return <Loading />; // Render loading indicator only
       }
 
-    console.log(userId)
-
     return (
         <div className="flex h-screen">
             <SideNav onComponentChange={setActiveComponent} />

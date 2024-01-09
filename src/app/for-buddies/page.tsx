@@ -11,11 +11,13 @@ import insuranceIcon from "@/assets/icons/insurance.svg"
 import tick from "@/assets/icons/tick.svg"
 
 import profileImageSotck from "@/assets/images/profile-image-stock.webp";
+import { useRouter } from "next/navigation";
 
 const BuddyPage = () => {
 
     const [isChecked, setIsChecked] = useState(false)
     const [price, setPrice] = useState(1164)
+    const router = useRouter();
 
     const monthlyPrice = 97
     const yearlyPrice = 1197
@@ -53,6 +55,7 @@ const BuddyPage = () => {
                                 </div>
                             </div>
                         </div>
+                        <button onClick={() => router.push('/register-form')} className="start-button duration-500 mt-10 inline-flex rounded-3xl bg-fi- hover:bg-fi-secondary text-fi-white border-0 py-2 px-6 focus:outline-none text-lg">Start your journey</button>
                     </div>
                 </section>
 

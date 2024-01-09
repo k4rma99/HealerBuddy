@@ -95,7 +95,7 @@ export default function Hero() {
                 </h1>
                 <p className="mb-8 leading-relaxed mx-20 text-md lg:mx-0 lg:text-xl text-black">Don’t worry, you’re in safe hands. Find your healerbuddy today and start your journey towards a healthier mind.</p>
                 <div className="flex">
-                    <button onClick={() => router.push('/directory')} className="start-button duration-500 inline-flex rounded-3xl text-fi-midnight hover:text-fi-white border-0 py-2 px-6 focus:outline-none text-lg">Start your journey</button>
+                    <button onClick={() => router.push('/directory')} className="start-button duration-500 inline-flex rounded-3xl bg-fi-button text-fi-midnight hover:text-fi-white border-0 py-2 px-6 focus:outline-none text-lg">Start your journey</button>
                 </div>
             </div>
         </section>

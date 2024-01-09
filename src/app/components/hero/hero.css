@@ -1,11 +1,12 @@
 @import "../../globals.css";
 
 .start-button {
-  background-color: var(--interact-object-color);
+  background-color: #b8630d;
+  color: white;
 }
 
 .start-button:hover {
-  background-color: #b8630d;
+  background-color: #638942;
 }
 
 .text-content {
