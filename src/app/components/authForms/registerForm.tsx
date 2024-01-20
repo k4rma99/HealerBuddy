@@ -37,7 +37,7 @@ function RegisterForm() {
                 console.log('Registration successful:', data);
                 router.push('/login')
             } else {
-                console.error('Registration failed:', await response.text());
+                console.error('Registration failed:');
             }
         } catch (error) {
             console.error('Register:', error);
