@@ -7,7 +7,7 @@ export interface ItemProps {
 export interface UserModalProps {
   isOpen: boolean;
   handleClose: () => void;
-  userData: DoctorDataModel
+  userData: DoctorDataModel;
 }
 
 export interface DoctorDataModel {
@@ -18,8 +18,36 @@ export interface DoctorDataModel {
   specialities: Array<number>;
   languages: Array<number>;
   targetGroups: Array<number>;
-  locations: Array<number>
+  locations: Array<number>;
   contentMessage: string;
   profilePath: string;
   videoMessage: string;
+}
+
+export interface OnboardingFormSections {
+  id: string;
+  type:
+    | "text"
+    | "dropdown"
+    | "multi-select"
+    | "boolean"
+    | "file-upload"
+    | "start"
+    | "end"
+    | "accountCreation"
+    | "review";
+  text: string;
+  options?: OnboardingFormOptions[];
+  maxRating?: number;
+  conditional?: OnboardingFormConditionaluestion;
+}
+
+export interface OnboardingFormOptions {
+  value: string;
+  label: string;
+}
+
+export interface OnboardingFormConditionaluestion {
+  questionId: string;
+  answerValue: string;
 }

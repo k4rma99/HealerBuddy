@@ -12,6 +12,7 @@ import tick from "@/assets/icons/tick.svg"
 
 import profileImageSotck from "@/assets/images/profile-image-stock.webp";
 import { useRouter } from "next/navigation";
+import { RoleType } from "@/lib/enums";
 
 const BuddyPage = () => {
 
@@ -55,7 +56,7 @@ const BuddyPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <button onClick={() => router.push('/register-form')} className="start-button duration-500 mt-10 inline-flex rounded-3xl bg-fi- hover:bg-fi-secondary text-fi-white border-0 py-2 px-6 focus:outline-none text-lg">Start your journey</button>
+                        <button onClick={() => router.push(`/register-form?role=${RoleType.doctor}`)} className="start-button duration-500 mt-10 inline-flex rounded-3xl bg-fi- hover:bg-fi-secondary text-fi-white border-0 py-2 px-6 focus:outline-none text-lg">Start your journey</button>
                     </div>
                 </section>
 

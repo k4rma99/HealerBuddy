@@ -7,8 +7,6 @@ import { Team } from './components/team/team'
 import Footer from '@/shared/footer'
 
 import 'react-toastify/dist/ReactToastify.css';
-import MentalHealthForm from './register-form/page'
-import Directory from './directory/page'
 
 export default function Home() {
   return (

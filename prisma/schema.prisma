@@ -10,17 +10,12 @@ datasource db {
 }
 
 model User {
-  userId    String   @id @default(cuid())
-  email     String   @unique
-  password  String
-  role      RoleType @default(user)
-  createdOn DateTime @default(now())
-}
-
-enum RoleType {
-  user
-  doctor
-  admin
+  userId          String   @id @default(cuid())
+  email           String   @unique
+  password        String
+  role            RoleType @default(user)
+  isEmailVerified Boolean  @default(false)
+  createdOn       DateTime @default(now())
 }
 
 model Patient {
@@ -80,23 +75,17 @@ model Review {
   therapist   Therapist @relation(fields: [therapistId], references: [therapistId])
 }
 
-enum AppointmentType {
-  CONSULTATION
-  FOLLOW_UP
-  OTHER
-}
-
 model TherapistOnboarding {
   id                                Int      @id @default(autoincrement())
-  name                              String
-  email                             String   @unique
-  phoneNumber                       String
+  bio                               Biodata  @relation(fields: [biodataEmail], references: [email])
   country                           String
   highestEducationLvl               String
   currOccupation                    String
   yearsOfExp                        Int
   specializedTherapyTech            String[]
   areaOfExpertise                   String[]
+  avgRateForSession                 Int
+  crpoRegistrationNo                Int
   isLicensed                        Boolean
   licenseNumber                     String?
   isDisciplinaryAction              Boolean
@@ -107,4 +96,42 @@ model TherapistOnboarding {
   hasOnlineTherExp                  Boolean
   describeExp                       String?
   currentAOR                        String
+  biodataEmail                      String
+}
+
+model Biodata {
+  name                String
+  email               String                @unique
+  phoneNumber         String
+  age                 Int
+  sex                 String
+  TherapistOnboarding TherapistOnboarding[]
+}
+
+model PatientOnboarding {
+  id          Int    @id @default(autoincrement())
+  name        String
+  email       String @unique
+  phoneNumber String
+  country     String
+}
+
+model EmailToken {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+}
+
+// Enums
+
+enum RoleType {
+  user
+  doctor
+  admin
+}
+
+enum AppointmentType {
+  consultation
+  follow_up
 }

@@ -2,16 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+@font-face {
+  font-family: "ProductSans";
+  src: url("../assets/fonts/Black.ttf");
+  font-style: normal;
+}
 
+:root {
+  font-family: "ProductSans";
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-
   }
 }
 
 body {
-
 }
