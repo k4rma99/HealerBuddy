@@ -1,13 +1,21 @@
+"use client"
+
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { PrismaClient } from '@prisma/client';
 import { Loading } from '@/shared/loading/loading';
 
 const prisma = new PrismaClient();
 
+export interface EmailSearchQuery {
+    userId: string
+    token: string
+}
+
 export default function EmailVerification() {
     const router = useRouter();
-    const { userId, token } = router.query;
+    const userId = useSearchParams().get('userId') ?? "";
+    const token = useSearchParams().get('token') ?? "";
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
