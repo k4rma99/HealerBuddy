@@ -6,16 +6,6 @@ import Image from 'next/image';
 
 import profile from "@/assets/images/profile-image-stock.webp"
 
-
-interface Appointment {
-    date: Date;
-    name: string;
-}
-
-interface CalendarProps {
-    appointments: Appointment[];
-}
-
 const tableData = [
     {
         id: "#3066",
@@ -46,10 +36,10 @@ const tableData = [
 ];
 
 const columnNames = [
-    "Patient Id", "DOA", "Name","Time of Appointment", "Actions"
+    "Patient Id", "DOA", "Name", "Time of Appointment", "Actions"
 ]
 
-export const Calendar: React.FC<CalendarProps> = ({ appointments }) => {
+export const Calendar = ({ userId, userData }: { userId: String, userData: any }) => {
 
     const [currentMonth, setCurrentMonth] = useState(dayjs().month());
     const [currentYear, setCurrentYear] = useState(dayjs().year());

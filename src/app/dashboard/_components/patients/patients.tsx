@@ -48,7 +48,7 @@ const columnNames = [
     "Patient Id", "DOA", "Appointment Status", "Name", "Actions"
 ]
 
-export function Patients({ }) {
+export function Patients({ userId, userData }: { userId: String, userData: any }) {
     return (
         <div className="py-4 mx-auto">
             <div className="flex flex-col">
