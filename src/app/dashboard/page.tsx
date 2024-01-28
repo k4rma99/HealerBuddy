@@ -7,25 +7,24 @@ import { useRouter } from "next/navigation";
 import { Loading } from "@/shared/loading/loading";
 
 const Dashboard = () => {
-  const [userId, setUserId] = useState("")
+  const [userId, setUserId] = useState<string | null>(null)
   const [userData, setUserData] = useState(null)
   const [activeComponent, setActiveComponent] = useState(<MainDashboard />);
   const [isLoading, setIsLoading] = useState(true);
 
   const router = useRouter()
-  const storedUserId = localStorage?.getItem("userId");
 
   useEffect(() => {
 
     const handleRedirect = async () => {
-      if (!storedUserId) {
+      setUserId(localStorage?.getItem("userId"));
+      if (!userId) {
         router.push('/login'); // Redirect if not authenticated
-      } else {
-        setUserId(storedUserId); // Set userId if authenticated
+      } else {s
 
         const performMigration = async () => {
           try {
-            const response = await fetch(`/api/migrate-user/provider/${storedUserId}`, {
+            const response = await fetch(`/api/migrate-user/provider/${userId}`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
             }).then((res) => res.json());
