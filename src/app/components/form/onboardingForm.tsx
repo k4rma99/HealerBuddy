@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 
 import './form.css'
 import Header from '@/shared/header';
-import { OnboardingFormSections } from '@/app/model';
+import { OnboardingFormSections, OnboardingFormValidation } from '@/app/model';
 
 import { Formik, Form, Field, useFormikContext } from 'formik';
 import * as yup from 'yup';
@@ -12,7 +12,7 @@ import { TextField } from '@/shared/form-elements';
 import { useRouter } from 'next/navigation';
 import { RoleType } from '@/lib/enums';
 
-const OnboardingForm = ({ onboardingQuestions }) => {
+const OnboardingForm = ({ onboardingQuestions }: any) => {
     const [questions, setQuestions] = useState<OnboardingFormSections[]>([]);
     const [answers, setAnswers] = useState<Record<string, any>>({});
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -22,7 +22,6 @@ const OnboardingForm = ({ onboardingQuestions }) => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [setCrpoCheck, crpoCheck] = useState(false);
 
-    const formik = useFormikContext();
     const router = useRouter()
 
     const createAnswersMap = (questions: OnboardingFormSections[]) => {
@@ -33,31 +32,6 @@ const OnboardingForm = ({ onboardingQuestions }) => {
         });
         return answersMap;
     };
-
-    const formValidation = yup.object({
-        name: yup.string().required('Please provide your full name.'),
-        email: yup.string().email('Please provide a valid email address.').required('Email is required'),
-        phone: yup.number().required('Phone number is required'),
-        address: yup.string().required('Please provide your address.'),
-        pronouns: yup.string().required('Please select your preferred pronouns.'),
-        education: yup.string().required('Please select your highest level of completed education.'),
-        educationField: yup.string().required('Please select your field of study.'),
-        certifications: yup.string().required('Please select any relevant certifications or licenses.'),
-        additionalTraining: yup.string().required('Please indicate any specialized training or workshops.'),
-        experience: yup.number().required('Please enter your years of experience as a number.'),
-        approaches: yup.string().required('Please select your therapeutic approaches.'),
-        specialties: yup.string().required('Please select your areas of specialization.'),
-        expertise: yup.array().required('Please select at least 2 areas of expertise.').min(2, 'Please select at least 2 areas of expertise.'),
-        availableDays: yup.array().required('Please select at least 2 available days.').min(2, 'Please select at least 2 available days.'),
-        hours: yup.string().required('Please provide your typical hours of availability.'),
-        approachDescription: yup.string().required('Please describe your therapeutic approach and philosophy.'),
-        paymentMethod: yup.string().required('Please select your preferred payment method.'),
-        password: yup.string().required('Required'),
-        confirmPassword: yup.string()
-            .oneOf([yup.ref('password'), ""], 'Passwords must match')
-            .required('Required'),
-        crpo: yup.string().required('Please provide your CRPO number.')
-    });
 
     useEffect(() => {
         setAnswers(createAnswersMap(onboardingQuestions));
@@ -74,16 +48,6 @@ const OnboardingForm = ({ onboardingQuestions }) => {
 
     const handleNextQuestion = (event: any) => {
         event.preventDefault();
-
-        // if (formik.touched && !formik.isValid) {
-        //     const invalidField = document.querySelector<HTMLElement>('.form-control.is-invalid');
-        //     if (invalidField) {
-        //         invalidField.classList.add('shake-animation');
-        //         setTimeout(() => invalidField.classList.remove('shake-animation'), 500);
-        //         invalidField.focus();
-        //     }
-        //     return;
-        // }
 
         setCurrentQuestionIndex((prevIndex) => Math.min(prevIndex + 1, questions.length - 1));
 
@@ -119,6 +83,49 @@ const OnboardingForm = ({ onboardingQuestions }) => {
             document.getElementById("next-button")?.click();
         }
     };
+
+    function isValid(questionId: string, answer: any) {
+        const question: OnboardingFormSections = questions[questionId]; // Find the question object based on ID
+        const validationRules = question?.validation;
+
+        switch (validationRules?.type) {
+            case "text":
+                return validateText(answer, validationRules);
+            case "dropdown":
+                return answer && selectedOptionIsValid(answer, question.options);
+            case "multi-select":
+                return answer.length >= (validationRules?.min ?? 0);
+            case "file-upload":
+                return validateFileUpload(answer, validationRules);
+            default:
+                return true;
+        }
+    }
+
+    // Helper functions for specific validations
+    function validateText(answer: any, validationRules: OnboardingFormValidation) {
+        if (validationRules.pattern) {
+            return new RegExp(validationRules.pattern).test(answer);
+        } else if (validationRules.min) {
+            return answer.length >= validationRules.min;
+        } else if (validationRules.max) {
+            return answer.length <= validationRules.max;
+        } else {
+            return true; // No specific text validation rules
+        }
+    }
+
+    function selectedOptionIsValid(answer: any, options: any) {
+        return options.some((option: any) => option.value === answer);
+    }
+
+    function validateFileUpload(answer: any, validationRules: OnboardingFormValidation) {
+        if (validationRules.pattern) {
+            return new RegExp(validationRules.pattern).test(answer);
+        } else {
+            return true;
+        }
+    }
 
     // set submitting is basically to let the script know that formik is done with taking values
     // this allows for UI updates
@@ -172,7 +179,6 @@ const OnboardingForm = ({ onboardingQuestions }) => {
     return (
         <Formik
             initialValues={answers}
-            validationSchema={formValidation}
             onSubmit={handleSubmit}
         >
             <div className="h-screen">
@@ -198,7 +204,7 @@ const OnboardingForm = ({ onboardingQuestions }) => {
 
                                     if (index !== currentQuestionIndex) return null;
 
-                                    switch (question.type) {
+                                    switch (question.questionType) {
                                         case 'text':
                                             return (
                                                 <div key={index} className="mb-4">
@@ -207,16 +213,17 @@ const OnboardingForm = ({ onboardingQuestions }) => {
                                                     </label>
                                                     <Field
                                                         as="input"
-                                                        type="text"
+                                                        type={question?.validation?.type}
                                                         id={`question-${index}`}
                                                         name={question.id}
+                                                        value={answers[question.id] ?? ""}
                                                         className="my-5 text-xl block w-full border-b-2 border-gray-400 shadow-sm outline-none focus:ring-0"
                                                         onChange={(e: any) => handleAnswerChange(question.id, e.target.value)}
-                                                        aria-invalid={!answers[question.id]} // Add ARIA attribute for accessibility
-                                                        tabIndex="-1" // For making the input focussable. So when you click next it hits here
+                                                        aria-invalid={!isValid(question.id, answers[question.id])} // Improved validity check
+                                                        tabIndex="-1"
                                                     />
-                                                    {!answers[question.id] && (
-                                                        <div className="text-red-500 text-sm">This field is required.</div>
+                                                    {!isValid(question.id, answers[question.id]) && ( // Display error message if invalid
+                                                        <div className="text-red-500 text-sm">{question?.validation?.message}</div>
                                                     )}
                                                 </div>
                                             );
@@ -230,16 +237,23 @@ const OnboardingForm = ({ onboardingQuestions }) => {
                                                         {question?.options?.map((option, optionIndex) => (
                                                             <Field
                                                                 as="div"
-                                                                key={optionIndex}
+                                                                id={`question-${index}`}
+                                                                name={question.id}
+                                                                key={question.id}
                                                                 className={`rounded-md border border-gray-300 p-4 hover:bg-gray-100 cursor-pointer ${answers[question.id] === option.value ? 'bg-fi-white' : ''}`}
                                                                 onClick={(e: any) => handleAnswerChange(question.id, option.value)}
+                                                                aria-invalid={!isValid(question.id, answers[question.id])} // Added for accessibility
                                                             >
                                                                 {option.label}
                                                             </Field>
                                                         ))}
+                                                        {!isValid(question.id, answers[question.id]) && ( // Display error message if invalid
+                                                            <div className="text-red-500 text-sm">{question?.validation?.message}</div>
+                                                        )}
                                                     </div>
                                                 </div>
                                             );
+
                                         case 'multi-select':
                                             return (
                                                 <div key={index}>
@@ -250,13 +264,19 @@ const OnboardingForm = ({ onboardingQuestions }) => {
                                                         {question?.options?.map((option, optionIndex) => (
                                                             <Field
                                                                 as="div"
-                                                                key={optionIndex}
+                                                                id={`question-${index}`}
+                                                                name={question.id}
+                                                                key={question.id}
                                                                 className={`rounded-md border border-gray-300 p-4 hover:bg-gray-100 cursor-pointer ${answers[question.id]?.includes(option) ? 'bg-fi-white' : ''}`}
                                                                 onClick={() => handleAnswerChange(question.id, answers[question.id]?.includes(option) ? answers[question.id].filter((opt: any) => opt !== option) : [...answers[question.id] || [], option])}
+                                                                aria-invalid={!isValid(question.id, answers[question.id])}
                                                             >
                                                                 {option.label}
                                                             </Field>
                                                         ))}
+                                                        {!isValid(question.id, answers[question.id]) && ( // Display error message if invalid
+                                                            <div className="text-red-500 text-sm">{question?.validation?.message}</div>
+                                                        )}
                                                     </div>
                                                 </div>
                                             );
@@ -291,13 +311,20 @@ const OnboardingForm = ({ onboardingQuestions }) => {
                                                         {question.text}
                                                     </label>
                                                     <input
-                                                        type="file"
+                                                        type="text" // Changed to text input for link entry
                                                         id={`question-${index}`}
-                                                        className="my-5 p-10 text-xl block w-full border-b-2 border-gray-400 shadow-sm outline-none focus:ring-0"
-                                                        onChange={(e: any) => handleFileUpload(e.target.files, question.id)}
+                                                        className="my-5 text-xl block w-full border-b-2 border-gray-400 shadow-sm outline-none focus:ring-0"
+                                                        onChange={(e: any) => handleFileUpload(e?.target?.value, question.id)} // Modified to handle link value
+                                                        pattern={question?.validation?.pattern} // Added validation pattern
+                                                        title={question?.validation?.message} // Added validation message
                                                     />
+                                                    {/* Validation error message (optional) */}
+                                                    {question?.validation?.message && (
+                                                        <div className="text-red-500 text-sm">{question?.validation?.message}</div>
+                                                    )}
                                                 </div>
                                             );
+
                                         case 'start':
                                             return (
                                                 <div key={index} className="mb-4 text-2xl text-center">
@@ -364,8 +391,8 @@ const OnboardingForm = ({ onboardingQuestions }) => {
                                         id="next-button"
                                         type={currentQuestionIndex < questions.length - 1 ? 'button' : 'submit'}
                                         className={`px-4 py-2 bg-fi-darker text-white rounded-md hover:bg-fi-darkest focus:outline-none transition-all duration-300 ease-in-out ${currentQuestionIndex === 0 ? 'hidden' : ''}`}
-                                        // disabled={formik.isSubmitting || formik.touched && !formik.isValid}
-                                        onClick={(event: any) => { currentQuestionIndex === questions.length ? handleSubmit(event) : handleNextQuestion(event) }}
+                                        // disabled={!isValid(currentQuestionIndex, answers[question.id])}
+                                        onClick={(event: any) => { currentQuestionIndex === questions.length ? handleSubmit() : handleNextQuestion(event) }}
                                     >
                                         {currentQuestionIndex < questions.length - 1 ? 'Next' : 'Submit'}
                                     </button>

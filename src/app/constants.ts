@@ -188,32 +188,114 @@ export const menuItems: any = [
 
 export const doctorOnBoardingQuestions: OnboardingFormSections[] = [
   {
-    type: "start",
+    questionType: "start",
     id: "start",
     text: "Welcome to HealerBuddy therapist onboarding form",
   },
+
+  // Biodata
   {
-    type: "text",
+    questionType: "text",
     text: "Please provide your full name.",
     id: "name",
+    validation: {
+      type: "text",
+      pattern: /^[A-Za-z ]+$/,
+      message: "Please enter a valid name (letters and spaces only).",
+    },
   },
   {
-    type: "text",
+    questionType: "text",
+    id: "dateOfBirth",
+    text: "Please enter your date of birth.",
+    validation: {
+      type: "date",
+      message: "Please enter a valid date of birth.",
+    },
+  },
+  {
+    questionType: "text",
+    id: "age",
+    text: "What is your current age?",
+    validation: {
+      type: "number",
+      min: 18,
+      message: "You must be at least 18 years old to register.",
+    },
+  },
+  {
+    questionType: "dropdown",
+    id: "gender",
+    text: "Please select your gender:",
+    options: [
+      { value: "male", label: "Male" },
+      { value: "female", label: "Female" },
+      { value: "nonbinary", label: "Non-binary" },
+      { value: "genderqueer", label: "Genderqueer" },
+      { value: "transgender", label: "Transgender" },
+      { value: "genderfluid", label: "Genderfluid" },
+      { value: "agender", label: "Agender" },
+      { value: "other", label: "Other" },
+    ],
+    validation: {
+      type: "dropdown",
+      message: "Please select your gender.",
+    },
+  },
+  {
+    questionType: "dropdown",
+    id: "ethnicity",
+    text: "Please select your ethnicity (optional):",
+    options: [
+      { value: "asian", label: "Asian" },
+      { value: "black", label: "Black or African American" },
+      { value: "hispanic", label: "Hispanic or Latino" },
+      { value: "nativeAmerican", label: "Native American or Alaska Native" },
+      {
+        value: "pacificIslander",
+        label: "Native Hawaiian or Other Pacific Islander",
+      },
+      { value: "white", label: "White" },
+      { value: "middleEastern", label: "Middle Eastern" },
+      { value: "southAsian", label: "South Asian" },
+      { value: "southeastAsian", label: "Southeast Asian" },
+      { value: "other", label: "Other" },
+    ],
+    validation: {
+      type: "dropdown",
+      message: "Please select your ethincity.",
+    },
+  },
+  {
+    questionType: "text",
     text: "What is your primary email address we can reach you at?",
     id: "email",
+    validation: {
+      type: "email",
+      message: "Please enter a valid email address.",
+    },
   },
   {
-    type: "text",
+    questionType: "text",
     text: "May we have your phone number for convenient communication?",
     id: "phone",
+    validation: {
+      type: "phone",
+      message: "Please enter a valid phone number.",
+    },
   },
   {
-    type: "text",
+    questionType: "text",
     text: "Could you share your address of your current residence?",
     id: "address",
+    validation: {
+      type: "text",
+      pattern: /^[A-Za-z0-9\s,.'-]+$/,
+      message: "Please enter a valid address.",
+    },
   },
   {
-    type: "dropdown",
+    questionType: "dropdown",
     text: "To ensure we address you correctly, what are your preferred pronouns?",
     id: "pronouns",
     options: [
@@ -222,9 +304,13 @@ export const doctorOnBoardingQuestions: OnboardingFormSections[] = [
       { value: "theyThem", label: "They/Them" },
       { value: "other", label: "Other" },
     ],
+    validation: {
+      type: "dropdown",
+      message: "Please select your preferred pronouns.",
+    },
   },
   {
-    type: "dropdown",
+    questionType: "dropdown",
     text: "Please tell us about your highest level of completed education.",
     id: "education",
     options: [
@@ -232,12 +318,16 @@ export const doctorOnBoardingQuestions: OnboardingFormSections[] = [
       { value: "bachelor", label: "Bachelor's Degree" },
       { value: "master", label: "Master's Degree" },
       { value: "doctorate", label: "Doctorate Degree" },
-      { value: "other", label: "Other" }, // Optional: include an "Other" option
+      { value: "other", label: "Other" },
     ],
+    validation: {
+      type: "dropdown",
+      message: "Please select your highest level of education.",
+    },
   },
   {
     id: "educationField",
-    type: "dropdown",
+    questionType: "dropdown",
     text: "In which field did you primarily focus your studies?",
     options: [
       { value: "psychology", label: "Psychology" },
@@ -246,10 +336,14 @@ export const doctorOnBoardingQuestions: OnboardingFormSections[] = [
       { value: "medicine", label: "Medicine" },
       { value: "other", label: "Other (please specify)" },
     ],
+    validation: {
+      type: "dropdown",
+      message: "Please select your area of study.",
+    },
   },
   {
     id: "certifications",
-    type: "dropdown",
+    questionType: "dropdown",
     text: "Do you hold any relevant professional certifications or licenses that enhance your expertise?",
     options: [
       { value: "lpc", label: "LPC" },
@@ -258,19 +352,35 @@ export const doctorOnBoardingQuestions: OnboardingFormSections[] = [
       { value: "lcsw", label: "LCSW" },
       { value: "other", label: "Other (please specify)" },
     ],
+    validation: {
+      type: "dropdown",
+      message: "Please select your relevant certificaition.",
+    },
   },
   {
-    type: "text",
+    questionType: "text",
     text: "Have you completed any specialized training or workshops that further refine your therapeutic skills?",
     id: "additionalTraining",
+    validation: {
+      type: "text",
+      message:
+        "Please provide a brief description of your additional training or workshops (optional).",
+    },
   },
+
   {
-    type: "text",
+    questionType: "text",
     text: "How many years of valuable experience do you have as a therapist?",
     id: "experience",
+    validation: {
+      type: "number",
+      min: 0,
+      message:
+        "Please enter a valid number of years of experience (minimum 0).",
+    },
   },
   {
-    type: "multi-select",
+    questionType: "multi-select",
     text: "Which therapeutic approaches do you typically incorporate into your practice?",
     id: "approaches",
     options: [
@@ -281,9 +391,15 @@ export const doctorOnBoardingQuestions: OnboardingFormSections[] = [
       { value: "humanistic", label: "Humanistic" },
       { value: "other", label: "Other (please specify)" },
     ],
+    validation: {
+      type: "multi-select",
+      min: 1,
+      message: "Please select at least one therapeutic approach.",
+    },
   },
+
   {
-    type: "multi-select",
+    questionType: "multi-select",
     text: "What are your primary areas of specialization where you excel?",
     id: "specialties",
     options: [
@@ -300,12 +416,17 @@ export const doctorOnBoardingQuestions: OnboardingFormSections[] = [
       { value: "lifeTransitions", label: "Life Transitions" },
       { value: "other", label: "Other" },
     ],
+    validation: {
+      type: "multi-select",
+      min: 1,
+      message: "Please select at least one area of specialization.",
+    },
   },
 
   // Skillset
   {
     id: "expertise",
-    type: "multi-select",
+    questionType: "multi-select",
     text: "In which areas of expertise do you feel confident and accomplished?",
     options: [
       { value: "individual", label: "Individual Therapy" },
@@ -316,28 +437,29 @@ export const doctorOnBoardingQuestions: OnboardingFormSections[] = [
       { value: "treatment", label: "Treatment Planning" },
       { value: "crisis", label: "Crisis Intervention" },
     ],
+    validation: {
+      type: "multi-select",
+      min: 1,
+      message: "Please select at least one area of expertise.",
+    },
   },
 
-  // // Past Records
-  // {
-  //   type: "boolean",
-  //   text: "To ensure transparency, have you ever been the subject of disciplinary action or complaint related to your professional practice?",
-  //   id: "disciplinary",
-  // },
-  // {
-  //   type: "text",
-  //   text: "If yes, please provide details to ensure full clarity.",
-  //   id: "disciplinary-details",
-  //   conditional: { questionId: "disciplinary", answerValue: "yes" },
-  // },
-
   // CRPO Number
-  { type: "text", text: "Please provide your CRPO number.", id: "crpo" },
+  {
+    questionType: "text",
+    text: "Please provide your CRPO number.",
+    id: "crpo",
+    validation: {
+      type: "regex",
+      pattern: /^[A-Z0-9]{6}$/,
+      message: "Please enter a valid CRPO number (6 alphanumeric characters).",
+    },
+  },
 
   // Availability
   {
     id: "availableDays",
-    type: "multi-select",
+    questionType: "multi-select",
     text: "Which days of the week are you typically available to connect with clients?",
     options: [
       { value: "monday", label: "Monday" },
@@ -347,29 +469,56 @@ export const doctorOnBoardingQuestions: OnboardingFormSections[] = [
       { value: "friday", label: "Friday" },
       { value: "saturday", label: "Saturday" },
     ],
+    validation: {
+      type: "multi-select",
+      min: 1,
+      message: "Please select at least one day of availability.",
+    },
   },
+
   {
-    type: "text",
+    questionType: "text",
     text: "What are your typical hours of availability during the week?",
     id: "hours",
+    validation: {
+      type: "regex",
+      min: 5,
+      max: 20,
+      message:
+        "Please enter valid hours in format HH:MM-HH:MM (optional AM/PM).",
+    },
   },
 
   // Additional Information
   {
-    type: "text",
-    text: "Please briefly describe your therapeutic approach and philosophy in a way that showcases your unique perspective and strengths.",
+    questionType: "text",
+    text: "Please briefly describe your therapeutic approach and philosophy in a way that showcases your unique perspective and strengths.(min. 200 words)",
     id: "approachDescription",
+    validation: {
+      type: "text",
+      min: 200,
+      max: 500,
+      message:
+        "Please provide a detailed description of your approach and philosophy (minimum 200 characters, maximum 500 characters).",
+    },
   },
   {
-    type: "file-upload",
+    questionType: "file-upload",
     text: "If you have a resume or CV available, feel free to upload it here for our reference (optional).",
     id: "resume",
+    validation: {
+      type: "text",
+      pattern:
+        /http(s|):\/\/(www\.)?drive\.google\.com\/file\/d\/[a-zA-Z0-9_-]+(\/view)?\?usp=sharing/,
+      message:
+        "Please provide a valid Google Drive link (starting with https://drive.google.com/file/d/).",
+    },
   },
 
   // Basic Payment Details
   {
     id: "paymentMethod",
-    type: "dropdown",
+    questionType: "dropdown",
     text: "Preferred payment method:",
     options: [
       { value: "creditCard", label: "Credit Card" },
@@ -379,19 +528,19 @@ export const doctorOnBoardingQuestions: OnboardingFormSections[] = [
     ],
   },
   {
-    type: "text",
+    questionType: "text",
     text: "Cardholder name (if applicable):",
     id: "cardholderName",
   },
-  { type: "text", text: "Card number (if applicable):", id: "card-number" },
+  { questionType: "text", text: "Card number (if applicable):", id: "card-number" },
   // { type: "review", id: "review", text: "Review your changes" },
   {
     id: "accountCreation",
-    type: "accountCreation",
+    questionType: "accountCreation",
     text: "Create your HealerBuddy account",
   },
   {
-    type: "end",
+    questionType: "end",
     id: "end",
     text: "Thank you for completing the form! Please wait as we redirect you to our accoount registration.",
   },
@@ -399,29 +548,29 @@ export const doctorOnBoardingQuestions: OnboardingFormSections[] = [
 
 export const patientOnboardinguestions: OnboardingFormSections[] = [
   {
-    type: "start",
+    questionType: "start",
     id: "start",
     text: "Welcome to HealerBuddy patient onboarding form",
   },
 
   // Basic Information
   {
-    type: "text",
+    questionType: "text",
     text: "Please provide your full name.",
     id: "name",
   },
   {
-    type: "text",
+    questionType: "text",
     text: "What is your primary email address we can reach you at?",
     id: "email",
   },
   {
-    type: "text",
+    questionType: "text",
     text: "May we have your phone number for convenient communication?",
     id: "phone",
   },
   {
-    type: "dropdown",
+    questionType: "dropdown",
     text: "To ensure we address you correctly, what are your preferred pronouns?",
     id: "pronouns",
     options: [
@@ -437,14 +586,14 @@ export const patientOnboardinguestions: OnboardingFormSections[] = [
     ],
   },
   {
-    type: "text",
+    questionType: "text",
     text: "What is your age?",
     id: "age",
   },
 
   // Current Concerns
   {
-    type: "multi-select",
+    questionType: "multi-select",
     text: "Please select the main concerns or challenges that have brought you here today:",
     id: "concerns",
     options: [
@@ -459,7 +608,7 @@ export const patientOnboardinguestions: OnboardingFormSections[] = [
     ],
   },
   {
-    type: "multi-select",
+    questionType: "multi-select",
     text: "Please select any of the following symptoms or experiences that apply to you:",
     id: "symptoms",
     options: [
@@ -485,13 +634,13 @@ export const patientOnboardinguestions: OnboardingFormSections[] = [
   // Account Creation
   {
     id: "accountCreation",
-    type: "accountCreation",
+    questionType: "accountCreation",
     text: "Create your HealerBuddy account",
   },
 
   // End
   {
-    type: "end",
+    questionType: "end",
     id: "end",
     text: "Thank you for completing the form! We'll be in touch soon to schedule your first appointment.",
   },

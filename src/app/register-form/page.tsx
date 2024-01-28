@@ -14,7 +14,7 @@ function MentalHealthForm() {
   console.log(params.get('role'))
   return (
     <div className="flex flex-col h-screen overflow-hidden">
-      <OnboardingForm onboardingQuestions={params.role === RoleType.doctor ? doctorOnBoardingQuestions : patientOnboardinguestions} />
+      <OnboardingForm onboardingQuestions={Number(params.get('role')) === RoleType.doctor ? doctorOnBoardingQuestions : patientOnboardinguestions} />
     </div>
   );
 }

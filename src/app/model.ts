@@ -26,7 +26,7 @@ export interface DoctorDataModel {
 
 export interface OnboardingFormSections {
   id: string;
-  type:
+  questionType:
     | "text"
     | "dropdown"
     | "multi-select"
@@ -40,6 +40,15 @@ export interface OnboardingFormSections {
   options?: OnboardingFormOptions[];
   maxRating?: number;
   conditional?: OnboardingFormConditionaluestion;
+  validation?: OnboardingFormValidation;
+}
+
+export interface OnboardingFormValidation {
+  type: string;
+  pattern?: any;
+  min?: number;
+  max?: number;
+  message: string;
 }
 
 export interface OnboardingFormOptions {
