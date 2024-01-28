@@ -1,4 +1,4 @@
-import { useSession, signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Image from 'next/image';
@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { TextField } from '@/shared/form-elements';
 
 import logo from "@/assets/images/logo-text-v24.png";
+import { useState } from 'react';
+import { Loading } from '@/shared/loading/loading';
 
 // Define the form validation schema
 const formValidation = Yup.object({
@@ -14,13 +16,14 @@ const formValidation = Yup.object({
 });
 
 export const LoginForm = () => {
-  const { data: session } = useSession();
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { data: session } = useSession();
 
   // Submit handler for Formik
   const handleSubmit = async (values: { email: string; password: string }, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {
     try {
-
+      setLoading(true)
       // Sign in with NextAuth.js
       const signInData = await signIn('credentials', {
         redirect: false,
@@ -29,22 +32,31 @@ export const LoginForm = () => {
       });
 
       // console.log(signInData)
+      if (session?.user) {
+        localStorage.setItem("userId", session?.user?.userId);
+      }
+
       // console.log(session?.user)
 
-      if(signInData?.error){
+      if (signInData?.error) {
         console.log(signInData?.error)
       } else {
+        setLoading(false);
         router.push(`/dashboard`)
       }
 
-      
+
     } catch (error) {
       console.error('Sign-in error:', error);
       // Handle error, show error message, etc.
     } finally {
       setSubmitting(false);
+      setLoading(false);
     }
   };
+
+  if (loading)
+    return <Loading />
 
   return (
     <div className="flex items-center w-full px-6 mx-auto lg:w-1/2">

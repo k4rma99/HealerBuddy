@@ -1,6 +1,5 @@
 "use client"
 
-import { useSession, signIn } from 'next-auth/react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Image from 'next/image';
@@ -19,7 +18,6 @@ const formValidation = Yup.object({
 });
 
 function RegisterForm() {
-    const { data: session } = useSession();
     const router = useRouter();
 
     // Submit handler for Formik

@@ -1,7 +1,10 @@
 import { MongoClient } from "mongodb";
 import { NextResponse } from "next/server";
 
-export async function POST(req: any, { params }) {
+export async function POST(
+  req: any,
+  { params }: { params: { userId: String } }
+) {
   if (!process.env.MONGODB_URI) throw new Error("Environment variable not set");
 
   const client = new MongoClient(process.env.MONGODB_URI);
